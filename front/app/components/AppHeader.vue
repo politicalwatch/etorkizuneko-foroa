@@ -7,14 +7,7 @@ const switchLocalePath = useSwitchLocalePath()
 const route = useRoute()
 
 const open = ref(false)
-
-// Rutas sin prefijo de idioma: NuxtLinkLocale añade /es, /eu, /en.
-const navItems = computed(() => [
-  { key: 'home', label: t('nav.home'), to: '/' },
-  { key: 'visions', label: t('nav.visions'), to: '/ejes' },
-  { key: 'processes', label: t('nav.processes'), to: '/procesos' },
-  { key: 'agenda', label: t('nav.agenda'), to: '/eventos' }
-])
+const navItems = useNav()
 
 // Cerrar al navegar
 watch(() => route.fullPath, () => {

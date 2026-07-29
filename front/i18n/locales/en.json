@@ -9,6 +9,11 @@
     "open": "Menu",
     "close": "Close"
   },
+  "footer": {
+    "credit": "Etorkizuneko Foroa is a {gv} project driven by {pw} and {dot}.",
+    "gobiernoVasco": "Basque Government",
+    "privacy": "Privacy policy"
+  },
   "common": {
     "language": "Language",
     "notFound": "Not found"

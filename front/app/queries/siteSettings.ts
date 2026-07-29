@@ -4,5 +4,6 @@ import { defineQuery } from 'groq'
 // internacionalizados, así que no necesitan $lang.
 export const SITE_SETTINGS_QUERY = defineQuery(`*[_id == "siteSettings"][0]{
   siteTitle,
+  contactEmail,
   "logoUrl": logo.asset->url
 }`)

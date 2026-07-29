@@ -16,6 +16,8 @@ useHead(() => ({
       <main>
         <NuxtPage />
       </main>
+
+      <AppFooter />
     </div>
   </UApp>
 </template>

@@ -9,6 +9,11 @@
     "open": "Menua",
     "close": "Itxi"
   },
+  "footer": {
+    "credit": "Etorkizuneko Foroa {gv}ren proiektua da, {pw} eta {dot} erakundeek bultzatua.",
+    "gobiernoVasco": "Eusko Jaurlaritza",
+    "privacy": "Pribatutasun politika"
+  },
   "common": {
     "language": "Hizkuntza",
     "notFound": "Ez da aurkitu"

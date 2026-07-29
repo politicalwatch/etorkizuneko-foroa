@@ -1,8 +1,13 @@
 {
   "nav": {
     "home": "Hasiera",
-    "processes": "Prozesuak",
-    "events": "Ekitaldiak"
+    "visions": "Etorkizuneko ikuspegiak",
+    "processes": "Amaitutako proiektuak",
+    "agenda": "Agenda"
+  },
+  "menu": {
+    "open": "Menua",
+    "close": "Itxi"
   },
   "common": {
     "language": "Hizkuntza",

@@ -10,29 +10,12 @@ useHead(() => ({
 
 <template>
   <UApp>
-    <UHeader>
-      <template #left>
-        <NuxtLinkLocale to="/">
-          <AppLogo class="w-auto h-6 shrink-0" />
-        </NuxtLinkLocale>
-      </template>
+    <div class="relative min-h-screen">
+      <AppHeader />
 
-      <template #right>
-        <LangSwitcher />
-        <UColorModeButton />
-      </template>
-    </UHeader>
-
-    <UMain>
-      <NuxtPage />
-    </UMain>
-
-    <UFooter>
-      <template #left>
-        <p class="text-sm text-muted">
-          Etorkizuneko Foroa
-        </p>
-      </template>
-    </UFooter>
+      <main>
+        <NuxtPage />
+      </main>
+    </div>
   </UApp>
 </template>

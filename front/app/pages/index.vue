@@ -18,7 +18,7 @@ const { data } = await useSanityQuery(HOME_QUERY, { lang: locale.value })
 
     <section>
       <h2 class="text-xl font-semibold mb-4">
-        {{ $t('nav.home') }}
+        {{ $t('nav.visions') }}
       </h2>
       <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <li

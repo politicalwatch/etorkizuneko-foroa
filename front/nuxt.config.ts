@@ -16,6 +16,13 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  // El diseño es de identidad fija (blanco / negro / coral); no invertir con el
+  // dark mode del sistema.
+  colorMode: {
+    preference: 'light',
+    fallback: 'light'
+  },
+
   compatibilityDate: '2026-06-30',
 
   // Autoinyecta los tokens SCSS en cada <style lang="scss"> de los componentes,

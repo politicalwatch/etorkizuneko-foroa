@@ -1,8 +1,13 @@
 {
   "nav": {
     "home": "Home",
-    "processes": "Processes",
-    "events": "Events"
+    "visions": "Visions of the future",
+    "processes": "Completed projects",
+    "agenda": "Agenda"
+  },
+  "menu": {
+    "open": "Menu",
+    "close": "Close"
   },
   "common": {
     "language": "Language",

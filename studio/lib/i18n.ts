@@ -1,11 +1,25 @@
 import type {Rule} from 'sanity'
 import {BASE_LANGUAGE} from './languages'
 
-// Forma de cada item de un campo internacionalizado (internationalizedArrayString/Text)
+// Forma de cada item de un campo internacionalizado (internationalizedArrayString/Text).
+// OJO: en v5 del plugin el idioma se guarda en el campo `language`, no en `_key`
+// (el `_key` pasó a ser aleatorio). Ver README "Shape of stored data".
 export interface LocaleFieldValue {
-  _key: string
+  _key?: string
   _type?: string
+  language?: string
   value?: string
+}
+
+// Genera el texto fuente de un `slug` a partir de un campo internacionalizado,
+// usando el valor del idioma base (español). Uso: options.source de un campo slug.
+export function localizedSlugSource(fieldName: string) {
+  return (doc: Record<string, unknown>): string => {
+    const field = doc[fieldName]
+    if (!Array.isArray(field)) return ''
+    const base = (field as LocaleFieldValue[]).find((item) => item.language === BASE_LANGUAGE)
+    return base?.value ?? ''
+  }
 }
 
 // Resuelve el valor de un campo internacionalizado para mostrarlo en un `preview`.
@@ -15,7 +29,7 @@ export function localeValue(
   language: string = BASE_LANGUAGE,
 ): string | undefined {
   if (!Array.isArray(value)) return undefined
-  const preferred = value.find((item) => item._key === language && item.value)
+  const preferred = value.find((item) => item.language === language && item.value)
   return (preferred ?? value.find((item) => item.value))?.value
 }
 
@@ -29,7 +43,7 @@ export function localizedValidation(options: {required?: boolean; max?: number})
     if (options.required) {
       rules.push(
         rule.custom<LocaleFieldValue[]>((value) => {
-          const base = value?.find((item) => item._key === BASE_LANGUAGE)
+          const base = value?.find((item) => item.language === BASE_LANGUAGE)
           return base?.value && base.value.trim().length > 0
             ? true
             : `El contenido en ${BASE_LANGUAGE.toUpperCase()} es obligatorio`

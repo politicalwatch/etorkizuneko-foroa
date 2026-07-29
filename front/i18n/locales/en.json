@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "home": "Home",
+    "processes": "Processes",
+    "events": "Events"
+  },
+  "common": {
+    "language": "Language",
+    "notFound": "Not found"
+  },
+  "vision": {
+    "processes": "Axis processes",
+    "events": "Axis events"
+  },
+  "process": {
+    "status": {
+      "upcoming": "Coming soon",
+      "in-progress": "In progress",
+      "finished": "Finished"
+    },
+    "register": "Register"
+  },
+  "event": {
+    "virtual": "Virtual"
+  }
+}

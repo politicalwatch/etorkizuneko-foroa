@@ -1,6 +1,6 @@
 import {defineType, defineField, defineArrayMember} from 'sanity'
 import {RocketIcon} from '@sanity/icons/Rocket'
-import {localeValue, localizedValidation} from '../../lib/i18n'
+import {localeValue, localizedValidation, localizedSlugSource} from '../../lib/i18n'
 
 const STATUS_LABELS: Record<string, string> = {
   upcoming: 'Próximamente',
@@ -27,6 +27,14 @@ export const process = defineType({
       title: 'Título',
       type: 'internationalizedArrayString',
       validation: localizedValidation({required: true, max: 100}),
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug (URL)',
+      type: 'slug',
+      description: 'Identificador para la URL. Se genera desde el título en español.',
+      options: {source: localizedSlugSource('title'), maxLength: 96},
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'description',

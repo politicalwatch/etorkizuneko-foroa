@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "home": "Hasiera",
+    "processes": "Prozesuak",
+    "events": "Ekitaldiak"
+  },
+  "common": {
+    "language": "Hizkuntza",
+    "notFound": "Ez da aurkitu"
+  },
+  "vision": {
+    "processes": "Ardatzaren prozesuak",
+    "events": "Ardatzaren ekitaldiak"
+  },
+  "process": {
+    "status": {
+      "upcoming": "Laster",
+      "in-progress": "Abian",
+      "finished": "Amaituta"
+    },
+    "register": "Izena eman"
+  },
+  "event": {
+    "virtual": "Birtuala"
+  }
+}

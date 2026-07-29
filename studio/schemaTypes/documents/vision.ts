@@ -1,6 +1,6 @@
 import {defineType, defineField, defineArrayMember} from 'sanity'
 import {EyeOpenIcon} from '@sanity/icons/EyeOpen'
-import {localeValue, localizedValidation} from '../../lib/i18n'
+import {localeValue, localizedValidation, localizedSlugSource} from '../../lib/i18n'
 
 export const vision = defineType({
   name: 'vision',
@@ -21,6 +21,14 @@ export const vision = defineType({
       title: 'Título',
       type: 'internationalizedArrayString',
       validation: localizedValidation({required: true, max: 100}),
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug (URL)',
+      type: 'slug',
+      description: 'Identificador para la URL. Se genera desde el título en español.',
+      options: {source: localizedSlugSource('title'), maxLength: 96},
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'description',

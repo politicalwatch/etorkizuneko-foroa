@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "processes": "Procesos",
+    "events": "Eventos"
+  },
+  "common": {
+    "language": "Idioma",
+    "notFound": "No encontrado"
+  },
+  "vision": {
+    "processes": "Procesos del eje",
+    "events": "Eventos del eje"
+  },
+  "process": {
+    "status": {
+      "upcoming": "Próximamente",
+      "in-progress": "En proceso",
+      "finished": "Finalizado"
+    },
+    "register": "Inscribirse"
+  },
+  "event": {
+    "virtual": "Virtual"
+  }
+}

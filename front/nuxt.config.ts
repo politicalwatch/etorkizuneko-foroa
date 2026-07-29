@@ -18,6 +18,18 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2026-06-30',
 
+  // Autoinyecta los tokens SCSS en cada <style lang="scss"> de los componentes,
+  // así se pueden usar $brand, $space-md, etc. sin importar el partial.
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "~/assets/scss/tokens" as *;\n'
+        }
+      }
+    }
+  },
+
   eslint: {
     config: {
       stylistic: {
@@ -25,6 +37,13 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
+  },
+
+  // Inter (familia del diseño). @nuxt/fonts (incluido por Nuxt UI) la provisiona.
+  fonts: {
+    families: [
+      { name: 'Inter', provider: 'google', weights: [400, 500, 700, 900] }
+    ]
   },
 
   i18n: {

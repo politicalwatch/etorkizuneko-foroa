@@ -1,18 +1,54 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+/*
+ * Design tokens — Etorkizuneko Foroa
+ * Extraídos del diseño de Figma (HOME). Definidos como @theme de Tailwind v4:
+ * generan utilidades (bg-brand, text-ink, p-md, rounded-card, text-title…),
+ * los consume Nuxt UI (primary = brand) y quedan como custom properties
+ * (var(--color-brand-500), var(--spacing-md)…) usables en cualquier <style>.
+ */
 @theme static {
-  --font-sans: 'Public Sans', sans-serif;
+  /* Tipografía */
+  --font-sans: 'Inter', sans-serif;
 
-  --color-green-50: #EFFDF5;
-  --color-green-100: #D9FBE8;
-  --color-green-200: #B3F5D1;
-  --color-green-300: #75EDAE;
-  --color-green-400: #00DC82;
-  --color-green-500: #00C16A;
-  --color-green-600: #00A155;
-  --color-green-700: #007F45;
-  --color-green-800: #016538;
-  --color-green-900: #0A5331;
-  --color-green-950: #052E16;
+  /* Escala tipográfica (tamaño / interlineado) */
+  --text-caption: 14px;
+  --text-caption--line-height: 16px;
+  --text-body: 16px;
+  --text-body--line-height: 19px;
+  --text-title: 20px;
+  --text-title--line-height: 24px;
+
+  /* Color de marca (acento coral). 500 = valor exacto del diseño (#ff4d33) */
+  --color-brand-50: #fff2ef;
+  --color-brand-100: #ffe3dd;
+  --color-brand-200: #ffc6bb;
+  --color-brand-300: #ff9e8d;
+  --color-brand-400: #ff6f57;
+  --color-brand-500: #ff4d33;
+  --color-brand-600: #f0330f;
+  --color-brand-700: #c8260c;
+  --color-brand-800: #a52310;
+  --color-brand-900: #882214;
+  --color-brand-950: #4b0c05;
+
+  /* Neutros puros de la identidad (negro / blanco) */
+  --color-ink: #000000;
+  --color-paper: #ffffff;
+
+  /* Scrims / overlays sobre imagen */
+  --color-scrim: rgba(0, 0, 0, 0.25); /* overlay del banner */
+  --color-overlay: rgba(0, 0, 0, 0.75); /* fondo de pop-up / modal */
+
+  /* Espaciado (rejilla de 5px del diseño) */
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px; /* gutter de página y padding de tarjetas */
+  --spacing-lg: 30px;
+  --spacing-xl: 60px;
+
+  /* Radios */
+  --radius-card: 15px; /* tarjetas, botones (pill a 30px de alto), pop-up */
+  --radius-panel: 30px; /* contenedores grandes / secciones / banner */
 }

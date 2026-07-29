@@ -1,0 +1,35 @@
+// Design tokens (Etorkizuneko Foroa) como variables SCSS.
+//
+// Los VALORES viven en app/assets/css/main.css (@theme). Aquí solo se exponen
+// como alias SCSS para usarlos cómodamente en los <style lang="scss"> de los
+// componentes: p. ej. `color: $brand;` o `padding: $space-md;`.
+//
+// Este fichero se autoinyecta en cada bloque <style lang="scss"> (ver
+// vite.css.preprocessorOptions en nuxt.config.ts), así que no hace falta
+// importarlo manualmente.
+
+// — Color —
+$brand:        var(--color-brand-500);
+$brand-hover:  var(--color-brand-600);
+$brand-subtle: var(--color-brand-50);
+$ink:          var(--color-ink);
+$paper:        var(--color-paper);
+$scrim:        var(--color-scrim);
+$overlay:      var(--color-overlay);
+
+// — Tipografía —
+$font-sans:    var(--font-sans);
+$text-title:   var(--text-title);
+$text-body:    var(--text-body);
+$text-caption: var(--text-caption);
+
+// — Espaciado —
+$space-xs: var(--spacing-xs);
+$space-sm: var(--spacing-sm);
+$space-md: var(--spacing-md);
+$space-lg: var(--spacing-lg);
+$space-xl: var(--spacing-xl);
+
+// — Radios —
+$radius-card:  var(--radius-card);
+$radius-panel: var(--radius-panel);

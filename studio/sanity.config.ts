@@ -9,12 +9,17 @@ import {LANGUAGES, BASE_LANGUAGE} from './lib/languages'
 // Tipos con campos internacionalizados (muestran el filtro de idiomas)
 const LOCALIZED_TYPES = ['vision', 'process', 'event', 'homePage', 'siteSettings']
 
+// Por defecto production; SANITY_STUDIO_DATASET=dev para el sandbox local.
+// Debe coincidir con NUXT_PUBLIC_SANITY_DATASET del front, o la
+// previsualización mostrará un dataset distinto al que se está editando.
+const DATASET = process.env.SANITY_STUDIO_DATASET || 'production'
+
 export default defineConfig({
   name: 'default',
   title: 'Etorkizuneko Foroa',
 
   projectId: 'gm41vkqd',
-  dataset: 'production',
+  dataset: DATASET,
 
   plugins: [
     structureTool({structure}),

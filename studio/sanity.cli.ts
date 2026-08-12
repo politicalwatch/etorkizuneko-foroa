@@ -3,7 +3,9 @@ import {defineCliConfig} from 'sanity/cli'
 export default defineCliConfig({
   api: {
     projectId: 'gm41vkqd',
-    dataset: 'production'
+    // Dataset objetivo de los comandos de la CLI (dataset export/import, etc.).
+    // Por defecto production; SANITY_STUDIO_DATASET=dev para el sandbox local.
+    dataset: process.env.SANITY_STUDIO_DATASET || 'production'
   },
   deployment: {
     /**

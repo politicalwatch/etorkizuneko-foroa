@@ -71,7 +71,9 @@ export default defineNuxtConfig({
 
   sanity: {
     projectId: 'gm41vkqd',
-    dataset: 'production',
+    // Por defecto production; poner NUXT_PUBLIC_SANITY_DATASET=dev en .env para
+    // trabajar contra el dataset de pruebas sin tocar el contenido real.
+    dataset: process.env.NUXT_PUBLIC_SANITY_DATASET ?? 'production',
     apiVersion: '2026-05-15',
     typegen: {
       enabled: true,

@@ -75,6 +75,28 @@ export default defineNuxtConfig({
     // trabajar contra el dataset de pruebas sin tocar el contenido real.
     dataset: process.env.NUXT_PUBLIC_SANITY_DATASET ?? 'production',
     apiVersion: '2026-05-15',
+
+    // Preview de borradores desde la herramienta Presentation del Studio.
+    //
+    // OJO: NO usar la opción `token` de primer nivel — el módulo la mete en
+    // `runtimeConfig.public.sanity.token`, es decir, viaja al navegador.
+    // `visualEditing.token` sí queda en el runtimeConfig privado (servidor),
+    // y las queries del cliente pasan por /_sanity/visual-editing/fetch.
+    //
+    // El token debe existir en enBUILD TIME: si falta, el módulo desactiva
+    // visual editing (con warning) y las rutas /preview/* no se registran.
+    visualEditing: {
+      token: process.env.NUXT_SANITY_VISUAL_EDITING_TOKEN ?? '',
+      studioUrl: process.env.NUXT_PUBLIC_SANITY_VISUAL_EDITING_STUDIO_URL ?? 'http://localhost:3333',
+      // Content Source Maps: marcas invisibles en los strings que permiten el
+      // click-to-edit. El filtro por defecto ya excluye slug.current y URLs.
+      stega: true,
+      // 'live-visual-editing' = overlays + actualización en vivo al teclear.
+      // 'visual-editing' = overlays, recarga al guardar. 'custom' = ninguno.
+      // El modo NO afecta a si se ven borradores; eso lo decide la cookie de preview.
+      mode: 'live-visual-editing'
+    },
+
     typegen: {
       enabled: true,
       // Entrada que incluye los tipos generados por el plugin de i18n del Studio

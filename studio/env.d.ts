@@ -3,6 +3,7 @@
 // falta: el Studio corre en el navegador), así que se declara solo lo que se usa.
 declare const process: {
   env: {
+    SANITY_STUDIO_PREVIEW_URL?: string
     SANITY_STUDIO_DATASET?: string
   }
 }

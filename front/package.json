@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.16.0",
+    "@sanity/browserslist-config": "^1.0.5",
     "eslint": "^10.6.0",
     "sass": "^1.102.0",
     "typescript": "^6.0.3",

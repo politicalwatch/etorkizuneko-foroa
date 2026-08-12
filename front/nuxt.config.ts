@@ -5,9 +5,9 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/image',
     '@nuxt/scripts',
-    '@nuxt/a11y',
     '@nuxtjs/sanity',
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    '@nuxt/a11y'
   ],
 
   devtools: {

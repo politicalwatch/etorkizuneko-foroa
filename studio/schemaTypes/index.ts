@@ -9,8 +9,10 @@ import {socialLink} from './objects/socialLink'
 import {vision} from './documents/vision'
 import {process} from './documents/process'
 import {event} from './documents/event'
-import {siteSettings} from './documents/siteSettings'
-import {homePage} from './documents/homePage'
+
+// Singletons (documento único, listados a mano en `structure/`)
+import {siteSettings} from './singletons/siteSettings'
+import {homePage} from './singletons/homePage'
 
 export const schemaTypes = [
   // Objetos primero (referenciados por los documentos)
@@ -23,6 +25,7 @@ export const schemaTypes = [
   vision,
   process,
   event,
+  // Singletons
   siteSettings,
   homePage,
 ]

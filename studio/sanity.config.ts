@@ -69,5 +69,11 @@ export default defineConfig({
       SINGLETONS.includes(schemaType)
         ? prev.filter(({action}) => !['duplicate', 'delete', 'unpublish'].includes(action as string))
         : prev,
+
+    // `actions` no cubre el botón global de "＋ Crear" ni el Cmd+K: sin esto se
+    // pueden crear singletons huérfanos, con un _id aleatorio, que nunca
+    // aparecen en `structure/` (allí se abren por documentId fijo).
+    newDocumentOptions: (prev) =>
+      prev.filter((item) => !SINGLETONS.includes(item.templateId as string)),
   },
 })

@@ -3,13 +3,22 @@ import {structureTool} from 'sanity/structure'
 import {presentationTool} from 'sanity/presentation'
 import {visionTool} from '@sanity/vision'
 import {internationalizedArray} from 'sanity-plugin-internationalized-array'
-import {schemaTypes} from './schemaTypes'
+import {schemaTypes, INTERNATIONALIZED_FIELD_TYPES} from './schemaTypes'
 import {structure, SINGLETONS} from './structure'
 import {locations, mainDocuments} from './presentation/resolve'
 import {LANGUAGES, BASE_LANGUAGE} from './lib/languages'
 
 // Tipos con campos internacionalizados (muestran el filtro de idiomas)
-const LOCALIZED_TYPES = ['vision', 'process', 'event', 'homePage', 'siteSettings']
+const LOCALIZED_TYPES = [
+  'vision',
+  'process',
+  'event',
+  'homePage',
+  'visionsPage',
+  'agendaPage',
+  'processesPage',
+  'siteSettings',
+]
 
 // Origen del front para la previsualización. En local, el `nuxt dev` por
 // defecto; el prefijo /es porque i18n usa strategy: 'prefix' y no hay ruta sin él.
@@ -49,7 +58,10 @@ export default defineConfig({
       languages: LANGUAGES,
       // Solo el idioma base se crea/muestra por defecto; el resto se añaden a demanda
       defaultLanguages: [BASE_LANGUAGE],
-      fieldTypes: ['string', 'text'],
+      // Además de string/text, se envuelven los dos tipos de texto enriquecido
+      // (ver schemaTypes/index.ts). Eso genera `internationalizedArrayRichText`
+      // e `internationalizedArrayBlockContent`, que usan los documentos.
+      fieldTypes: INTERNATIONALIZED_FIELD_TYPES,
       // Integración incorporada con @sanity/language-filter (mostrar/ocultar idiomas)
       languageFilter: {
         documentTypes: LOCALIZED_TYPES,

@@ -57,7 +57,10 @@ export function localizedValidation(options: {required?: boolean; max?: number})
         rule
           .custom<LocaleFieldValue[]>((value) => {
             const tooLong = (value ?? []).filter(
-              (item) => typeof item.value === 'string' && item.value.length > max,
+              (item): item is LocaleFieldValue & {_key: string; value: string} =>
+                typeof item._key === 'string' &&
+                typeof item.value === 'string' &&
+                item.value.length > max,
             )
             if (tooLong.length) {
               return tooLong.map((item) => ({

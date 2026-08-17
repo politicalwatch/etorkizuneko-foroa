@@ -37,13 +37,25 @@ function slugLocations(segment: string, fallbackTitle: string) {
   })
 }
 
-// NOTA: no se enlazan páginas índice (/ejes, /procesos, /eventos). useNav las
-// referencia, pero en app/pages/ solo existen los [slug].vue — todavía no hay
-// index.vue para esas secciones, así que enlazarlas daría 404.
 export const locations: DocumentLocationResolvers = {
   homePage: defineLocations({
     select: {},
     resolve: () => ({locations: perLocale('Página de inicio', '')}),
+  }),
+
+  visionsPage: defineLocations({
+    select: {},
+    resolve: () => ({locations: perLocale('Visiones de futuro', '/ejes')}),
+  }),
+
+  agendaPage: defineLocations({
+    select: {},
+    resolve: () => ({locations: perLocale('Agenda', '/eventos')}),
+  }),
+
+  processesPage: defineLocations({
+    select: {},
+    resolve: () => ({locations: perLocale('Procesos finalizados', '/procesos')}),
   }),
 
   // siteSettings alimenta el header y el footer, presentes en todas las
@@ -68,6 +80,9 @@ export const locations: DocumentLocationResolvers = {
  */
 export const mainDocuments = defineDocuments([
   {route: '/:locale', type: 'homePage'},
+  {route: '/:locale/ejes', type: 'visionsPage'},
+  {route: '/:locale/eventos', type: 'agendaPage'},
+  {route: '/:locale/procesos', type: 'processesPage'},
   {
     route: '/:locale/ejes/:slug',
     filter: `_type == "vision" && slug.current == $slug`,

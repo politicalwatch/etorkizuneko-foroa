@@ -2,7 +2,7 @@
   "nav": {
     "home": "Home",
     "visions": "Visions of the future",
-    "processes": "Completed projects",
+    "processes": "Completed processes",
     "agenda": "Agenda"
   },
   "menu": {
@@ -16,11 +16,31 @@
   },
   "common": {
     "language": "Language",
-    "notFound": "Not found"
+    "notFound": "Not found",
+    "readMore": "Read more",
+    "breadcrumb": "Breadcrumb"
+  },
+  "home": {
+    "goToAgenda": "Go to the agenda",
+    "viewAllProcesses": "View all processes",
+    "exploreVisions": "Explore the visions of the future",
+    "diagram": {
+      "narrative": "Narrative articulation and the relationship with citizens",
+      "institutional": "Institutional architecture and process improvement"
+    },
+    "map": {
+      "hint": "Select a point on the map to read a vision of the future.",
+      "point": "View the “{title}” vision of the future"
+    },
+    "prev": "Previous",
+    "next": "Next"
   },
   "vision": {
     "processes": "Axis processes",
-    "events": "Axis events"
+    "events": "Axis events",
+    "relatedProcesses": "Related processes",
+    "exploreOthers": "Explore the rest of the {visions}.",
+    "exploreOthersHighlight": "visions of the future of Basque citizens"
   },
   "process": {
     "status": {
@@ -28,9 +48,18 @@
       "in-progress": "In progress",
       "finished": "Finished"
     },
-    "register": "Register"
+    "register": "Sign up",
+    "view": "View process",
+    "filterByVision": "Filter by axis",
+    "noResultsForFilter": "No finished processes in the selected axes.",
+    "noneFinished": "No finished processes yet."
   },
   "event": {
+    "label": "Event",
+    "register": "Sign up",
     "virtual": "Virtual"
+  },
+  "agenda": {
+    "empty": "Nothing scheduled right now. Check back soon."
   }
 }

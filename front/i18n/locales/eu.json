@@ -2,7 +2,7 @@
   "nav": {
     "home": "Hasiera",
     "visions": "Etorkizuneko ikuspegiak",
-    "processes": "Amaitutako proiektuak",
+    "processes": "Amaitutako prozesuak",
     "agenda": "Agenda"
   },
   "menu": {
@@ -16,11 +16,31 @@
   },
   "common": {
     "language": "Hizkuntza",
-    "notFound": "Ez da aurkitu"
+    "notFound": "Ez da aurkitu",
+    "readMore": "Irakurri gehiago",
+    "breadcrumb": "Nabigazio-arrastoa"
+  },
+  "home": {
+    "goToAgenda": "Joan agendara",
+    "viewAllProcesses": "Ikusi prozesu guztiak",
+    "exploreVisions": "Arakatu etorkizuneko ikuspegiak",
+    "diagram": {
+      "narrative": "Kontakizunaren artikulazioa eta herritarrekiko harremana",
+      "institutional": "Arkitektura instituzionala eta prozesuen hobekuntza"
+    },
+    "map": {
+      "hint": "Hautatu maparen puntu bat etorkizuneko ikuspegi bat irakurtzeko.",
+      "point": "Ikusi «{title}» etorkizuneko ikuspegia"
+    },
+    "prev": "Aurrekoa",
+    "next": "Hurrengoa"
   },
   "vision": {
     "processes": "Ardatzaren prozesuak",
-    "events": "Ardatzaren ekitaldiak"
+    "events": "Ardatzaren ekitaldiak",
+    "relatedProcesses": "Lotutako prozesuak",
+    "exploreOthers": "Arakatu gainerako {visions}.",
+    "exploreOthersHighlight": "euskal herritarren etorkizuneko ikuspegiak"
   },
   "process": {
     "status": {
@@ -28,9 +48,18 @@
       "in-progress": "Abian",
       "finished": "Amaituta"
     },
-    "register": "Izena eman"
+    "register": "Eman izena",
+    "view": "Ikusi prozesua",
+    "filterByVision": "Iragazi ardatzaren arabera",
+    "noResultsForFilter": "Ez dago amaitutako prozesurik hautatutako ardatzetan.",
+    "noneFinished": "Oraindik ez dago amaitutako prozesurik."
   },
   "event": {
+    "label": "Ekitaldia",
+    "register": "Eman izena",
     "virtual": "Birtuala"
+  },
+  "agenda": {
+    "empty": "Une honetan ez dago ezer programatuta. Itzuli laster."
   }
 }

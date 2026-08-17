@@ -2,7 +2,7 @@
   "nav": {
     "home": "Inicio",
     "visions": "Visiones de futuro",
-    "processes": "Proyectos finalizados",
+    "processes": "Procesos finalizados",
     "agenda": "Agenda"
   },
   "menu": {
@@ -16,21 +16,50 @@
   },
   "common": {
     "language": "Idioma",
-    "notFound": "No encontrado"
+    "notFound": "No encontrado",
+    "readMore": "Leer más",
+    "breadcrumb": "Migas de pan"
+  },
+  "home": {
+    "goToAgenda": "Ir a la agenda",
+    "viewAllProcesses": "Ver todos los procesos",
+    "exploreVisions": "Explorar las visiones de futuro",
+    "diagram": {
+      "narrative": "Articulación narrativa y relación con la ciudadanía",
+      "institutional": "Arquitectura institucional y mejora de procesos"
+    },
+    "map": {
+      "hint": "Selecciona un punto del mapa para leer una visión de futuro.",
+      "point": "Ver la visión de futuro «{title}»"
+    },
+    "prev": "Anterior",
+    "next": "Siguiente"
   },
   "vision": {
     "processes": "Procesos del eje",
-    "events": "Eventos del eje"
+    "events": "Eventos del eje",
+    "relatedProcesses": "Procesos relacionados",
+    "exploreOthers": "Explora el resto de las {visions}.",
+    "exploreOthersHighlight": "visiones de futuro de la ciudadanía vasca"
   },
   "process": {
     "status": {
       "upcoming": "Próximamente",
-      "in-progress": "En proceso",
+      "in-progress": "En marcha",
       "finished": "Finalizado"
     },
-    "register": "Inscribirse"
+    "register": "Inscríbete",
+    "view": "Ver proceso",
+    "filterByVision": "Filtrar por eje",
+    "noResultsForFilter": "No hay procesos finalizados en los ejes seleccionados.",
+    "noneFinished": "Todavía no hay procesos finalizados."
   },
   "event": {
+    "label": "Evento",
+    "register": "Apúntate",
     "virtual": "Virtual"
+  },
+  "agenda": {
+    "empty": "No hay nada programado ahora mismo. Vuelve pronto."
   }
 }

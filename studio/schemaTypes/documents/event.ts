@@ -23,12 +23,29 @@ export const event = defineType({
       validation: localizedValidation({required: true, max: 100}),
     }),
     defineField({
+      name: 'subtitle',
+      title: 'Subtítulo',
+      type: 'internationalizedArrayString',
+      description:
+        'Una frase que resume el evento. Es lo que se lee en su tarjeta dentro de las ' +
+        'rejillas de "Procesos relacionados".',
+      validation: localizedValidation({required: true, max: 160}),
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug (URL)',
       type: 'slug',
       description: 'Identificador para la URL. Se genera desde el título en español.',
       options: {source: localizedSlugSource('title'), maxLength: 96},
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'registrationLink',
+      title: 'Enlace de inscripción',
+      type: 'url',
+      description:
+        'Enlace externo (ej. Typeform). Es el destino del botón "Apúntate" de la tarjeta.',
+      validation: (rule) => rule.uri({scheme: ['http', 'https']}),
     }),
     defineField({
       name: 'description',

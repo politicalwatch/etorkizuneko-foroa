@@ -1,8 +1,12 @@
 <script setup lang="ts">
-// Cabecera del sitio. Se superpone al hero (fondo oscuro), por eso el contenido
-// es blanco. Al abrir el menú despliega un panel negro con la navegación y el
+// Cabecera del sitio. Se superpone al contenido, así que toma el color de la
+// superficie de la página (blanco sobre las páginas negras, negro sobre las
+// blancas). Al abrir el menú despliega un panel negro con la navegación y el
 // selector de idioma. El logo sale de siteSettings (ver AppLogo).
 const { t, locale, locales } = useI18n()
+// La superficie que importa aquí no es la de la página sino la que la cabecera
+// tiene debajo: en la portada son distintas (ver useHeaderSurface).
+const surface = useHeaderSurface()
 const switchLocalePath = useSwitchLocalePath()
 const route = useRoute()
 
@@ -25,7 +29,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
 <template>
   <header
     class="app-header"
-    :class="{ 'app-header--open': open }"
+    :class="[`app-header--on-${surface}`, { 'app-header--open': open }]"
   >
     <div class="app-header__bar">
       <NuxtLinkLocale
@@ -33,7 +37,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
         :aria-label="t('nav.home')"
         @click="open = false"
       >
-        <AppLogo theme="light" />
+        <AppLogo :theme="open || surface === 'dark' ? 'light' : 'dark'" />
       </NuxtLinkLocale>
 
       <button
@@ -87,6 +91,19 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
   padding: $space-md $space-md 0;
   transition: background-color 0.2s ease;
 
+  // El botón lee `--surface-fg` / `--surface-bg`, que por defecto vienen de la
+  // página. Cuando la cabecera se apoya en algo distinto (la foto de la
+  // portada) se redefinen aquí y el resto de reglas siguen valiendo tal cual.
+  &--on-dark {
+    --surface-fg: #{$paper};
+    --surface-bg: #{$ink};
+  }
+
+  &--on-light {
+    --surface-fg: #{$ink};
+    --surface-bg: #{$paper};
+  }
+
   &--open {
     background-color: $ink;
     border-bottom-left-radius: $radius-panel;
@@ -137,7 +154,9 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
   }
 }
 
-// Botón pill del diseño (borde 1px, alto 30, pill)
+// Botón pill del diseño (borde 1px, alto 30, pill).
+// Sigue el color de la superficie de la página; con el menú abierto el panel es
+// negro, así que se fuerza a blanco.
 .pill {
   flex-shrink: 0;
   display: inline-flex;
@@ -145,17 +164,30 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
   justify-content: center;
   height: 30px;
   padding: 0 12px;
-  border: 1px solid $paper;
+  border: 1px solid currentcolor;
   border-radius: 9999px;
-  color: $paper;
+  color: var(--surface-fg, $paper);
   font-size: $text-body;
   line-height: 18px;
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
 
+  // Al pasar el puntero se invierte: el relleno toma el color del texto y el
+  // texto, el del fondo. Se escriben los dos con variables (no `currentcolor`)
+  // porque cambiar `color` en la misma regla también cambiaría el relleno.
   &:hover {
-    background-color: $paper;
-    color: $ink;
+    background-color: var(--surface-fg, $paper);
+    color: var(--surface-bg, $ink);
+  }
+
+  // Con el menú desplegado el panel es negro, sea cual sea la superficie.
+  .app-header--open & {
+    color: $paper;
+
+    &:hover {
+      background-color: $paper;
+      color: $ink;
+    }
   }
 }
 

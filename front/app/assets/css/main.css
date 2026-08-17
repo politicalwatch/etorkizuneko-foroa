@@ -41,6 +41,10 @@
   --color-scrim: rgba(0, 0, 0, 0.25); /* overlay del banner */
   --color-overlay: rgba(0, 0, 0, 0.75); /* fondo de pop-up / modal */
 
+  /* Magenta de los desgloses de datos (barras). Solo se usa ahí. */
+  --color-chart: #cc005f;
+  --color-chart-track: #eeeeef;
+
   /* Espaciado (rejilla de 5px del diseño) */
   --spacing-xs: 5px;
   --spacing-sm: 10px;
@@ -51,4 +55,32 @@
   /* Radios */
   --radius-card: 15px; /* tarjetas, botones (pill a 30px de alto), pop-up */
   --radius-panel: 30px; /* contenedores grandes / secciones / banner */
+}
+
+/*
+ * Superficies — el diseño alterna páginas sobre negro (home, listado y detalle
+ * de eje) y sobre blanco (detalle de proceso). En vez de que cada componente
+ * sepa en cuál está, la página declara su superficie y los hijos leen estas
+ * custom properties. `--surface-*` NO son @theme: son contextuales, cambian
+ * según el ancestro.
+ */
+.surface {
+  background-color: var(--surface-bg);
+  color: var(--surface-fg);
+}
+
+.surface--dark {
+  --surface-bg: var(--color-ink);
+  --surface-fg: var(--color-paper);
+  /* Bordes y separadores sobre negro */
+  --surface-line: rgba(255, 255, 255, 0.35);
+  /* Texto secundario (fechas, pies) */
+  --surface-muted: rgba(255, 255, 255, 0.7);
+}
+
+.surface--light {
+  --surface-bg: var(--color-paper);
+  --surface-fg: var(--color-ink);
+  --surface-line: rgba(0, 0, 0, 0.25);
+  --surface-muted: rgba(0, 0, 0, 0.6);
 }

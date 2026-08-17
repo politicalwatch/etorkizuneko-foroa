@@ -1,4 +1,26 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+// Proyecto y dataset de Sanity. Se leen una sola vez porque los consumen dos
+// bloques distintos (`sanity` y `image`), y si se desincronizan el sitio leería
+// el contenido de un dataset y las imágenes de otro.
+//
+// El proyecto es obligatorio y no tiene valor por defecto: sin él el módulo
+// fallaría más tarde con un error opaco, así que se corta aquí con un mensaje
+// que dice qué hacer.
+const SANITY_PROJECT_ID = process.env.NUXT_PUBLIC_SANITY_PROJECT_ID
+
+if (!SANITY_PROJECT_ID) {
+  throw new Error(
+    'Falta la variable NUXT_PUBLIC_SANITY_PROJECT_ID.\n'
+    + 'Copia front/.env.example a front/.env y rellénala '
+    + '(el ID del proyecto sale de `npx sanity debug` en studio/, o de sanity.io/manage).'
+  )
+}
+
+// Por defecto production; poner NUXT_PUBLIC_SANITY_DATASET=dev en .env para
+// trabajar contra el dataset de pruebas sin tocar el contenido real.
+const SANITY_DATASET = process.env.NUXT_PUBLIC_SANITY_DATASET ?? 'production'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -69,11 +91,19 @@ export default defineNuxtConfig({
     detectBrowserLanguage: false
   },
 
+  // @nuxtjs/sanity pinta <SanityImage> como <NuxtImg provider="sanity">, pero no
+  // registra el proveedor: hay que declararlo aquí. Sin esto, @nuxt/image lanza
+  // "Unknown provider: sanity" en cuanto una página tiene que pintar una imagen.
+  image: {
+    sanity: {
+      projectId: SANITY_PROJECT_ID,
+      dataset: SANITY_DATASET
+    }
+  },
+
   sanity: {
-    projectId: 'gm41vkqd',
-    // Por defecto production; poner NUXT_PUBLIC_SANITY_DATASET=dev en .env para
-    // trabajar contra el dataset de pruebas sin tocar el contenido real.
-    dataset: process.env.NUXT_PUBLIC_SANITY_DATASET ?? 'production',
+    projectId: SANITY_PROJECT_ID,
+    dataset: SANITY_DATASET,
     apiVersion: '2026-05-15',
 
     // Preview de borradores desde la herramienta Presentation del Studio.

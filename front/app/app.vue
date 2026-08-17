@@ -6,18 +6,24 @@ useHead(() => ({
   link: localeHead.value.link ?? [],
   meta: localeHead.value.meta ?? []
 }))
+
+// La página decide si va sobre negro o sobre blanco (ver useSurface).
+const surface = useSurface()
 </script>
 
 <template>
   <UApp>
-    <div class="relative min-h-screen">
+    <div
+      class="relative min-h-screen surface"
+      :class="`surface--${surface}`"
+    >
       <AppHeader />
 
       <main>
         <NuxtPage />
       </main>
 
-      <AppFooter />
+      <AppFooter :theme="surface" />
     </div>
   </UApp>
 </template>

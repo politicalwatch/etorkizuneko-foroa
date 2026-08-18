@@ -1,0 +1,10 @@
+# Paths are relative to the base directory (front/). This file overrides the
+# dashboard build settings.
+[build]
+  command = "npm run build"
+
+  # Not .output/public: on Netlify, Nitro uses the `netlify` preset and splits
+  # the build into dist/ (static assets) and .netlify/functions-internal/ (SSR).
+  # The SSR handler excludes /_nuxt/* and /_fonts/*, so those are only ever
+  # served from here — point this elsewhere and the site loads with no styles.
+  publish = "dist"

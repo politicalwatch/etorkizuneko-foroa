@@ -109,9 +109,8 @@ const year = new Date().getFullYear()
 
 <style lang="scss" scoped>
 .footer {
-  // Resplandor coral desde abajo (aproxima el círculo del diseño).
-  // El degradado siempre acaba en transparente; el fondo lo pone cada variante.
-  background-image: radial-gradient(90% 78% at 50% 120%, $brand 0%, transparent 150%);
+  position: relative;
+  overflow: hidden;
   background-color: transparent;
 
   // Sobre fondo claro: el degradado se apoya en blanco (coral → blanco).
@@ -131,11 +130,32 @@ const year = new Date().getFullYear()
   }
 }
 
+.footer::before {
+  content: '';
+  position: absolute;
+  top: $space-md;
+  left: 50%;
+  // Diámetro del diseño: 820 sobre 440 en móvil, 1920 sobre 1920 en escritorio.
+  width: max(100vw, 820px);
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  // `closest-side` fija el radio en la mitad de la caja, que es el del círculo.
+  background-image: radial-gradient(circle closest-side, $brand 25%, transparent 100%);
+  pointer-events: none;
+}
+
 .footer__inner {
+  // Posicionado para que se pinte por encima del ::before del resplandor: los
+  // dos van con z-index automático, así que decide el orden del documento.
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: $space-xl;
   padding: $space-md;
+
+  @media (width >= 1024px) {
+    padding: 150px $space-md $space-lg;
+  }
 }
 
 .footer__menu {
@@ -212,5 +232,13 @@ const year = new Date().getFullYear()
   gap: $space-md;
   font-size: $text-body;
   line-height: 19px;
+
+  // En escritorio la línea legal es una sola fila con el copyright pegado a la
+  // izquierda y la privacidad a la derecha. El orden del DOM es
+  // el de móvil (privacidad primero), así que se invierte con `row-reverse`.
+  @media (width >= 1024px) {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
 }
 </style>

@@ -1,6 +1,7 @@
 skills-lock.json
 .agents/
 .claude/
+.playwright*
 
 # Studio
 studio/node_modules/

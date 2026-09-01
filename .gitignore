@@ -21,3 +21,6 @@ front/.netlify/
 **/.env.local
 **/logs
 **/*.log
+
+# Backups
+backups/

@@ -16,17 +16,17 @@
   ],
   "dependencies": {
     "@sanity/language-filter": "^5.0.13",
-    "@sanity/vision": "^6.9.2",
+    "@sanity/vision": "^6.11.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "sanity": "^6.9.2",
+    "sanity": "^6.11.0",
     "sanity-plugin-internationalized-array": "^5.1.24",
     "styled-components": "^6.1.18"
   },
   "devDependencies": {
-    "@sanity/eslint-config-studio": "^6.0.0",
+    "@sanity/eslint-config-studio": "^7.0.0",
     "@types/react": "^19.2.14",
-    "eslint": "^9.28",
+    "eslint": "^10.9.1",
     "prettier": "^3.5",
     "typescript": "^6.0.3"
   },

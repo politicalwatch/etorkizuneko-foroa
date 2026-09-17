@@ -1,10 +1,12 @@
 <script setup lang="ts">
-// Desglose de datos: barras horizontales con su porcentaje.
+// Desglose de datos: barras horizontales con su porcentaje, con un encabezado
+// (normalmente la pregunta) y un pie (normalmente la fuente) opcionales.
 // El porcentaje se escribe dentro de la barra, o justo fuera cuando la barra
 // es demasiado corta para que quepa (así el 0% sigue siendo legible).
 const props = defineProps<{
   value: {
     title?: string
+    footer?: string
     rows?: { _key: string, label?: string, value?: number }[]
   }
 }>()
@@ -43,6 +45,13 @@ const INSIDE_THRESHOLD = 12
         </dd>
       </template>
     </dl>
+
+    <p
+      v-if="value.footer"
+      class="breakdown__footer"
+    >
+      {{ value.footer }}
+    </p>
   </div>
 </template>
 
@@ -50,13 +59,28 @@ const INSIDE_THRESHOLD = 12
 .breakdown {
   display: flex;
   flex-direction: column;
-  gap: $space-sm;
+  // El diseño separa encabezado, gráfico y pie con 30px.
+  gap: $space-lg;
+}
+
+// Encabezado y pie comparten tamaño (20px/24px, redonda); solo cambian de
+// color y de alineación.
+.breakdown__title,
+.breakdown__footer {
+  font-size: $text-title;
+  line-height: 24px;
+  font-weight: 400;
 }
 
 .breakdown__title {
-  font-size: $text-body;
-  line-height: 19px;
-  font-weight: 700;
+  color: $brand;
+}
+
+// La fuente del dato: alineada a la derecha y en el color del texto de la
+// superficie (negro sobre blanco, blanco sobre negro).
+.breakdown__footer {
+  text-align: right;
+  color: currentcolor;
 }
 
 .breakdown__rows {
@@ -101,8 +125,8 @@ const INSIDE_THRESHOLD = 12
   color: $paper;
 }
 
-// Barra demasiado corta: la cifra se sale a la derecha y se tiñe de magenta
-// para seguir leyéndose sobre el carril gris.
+// Barra demasiado corta: la cifra se sale a la derecha y se tiñe del color de
+// la barra para seguir leyéndose sobre el carril gris.
 .breakdown__bar--narrow {
   justify-content: flex-start;
   background-color: transparent;

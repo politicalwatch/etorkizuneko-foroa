@@ -17,9 +17,10 @@ export const dataBreakdown = defineType({
   fields: [
     defineField({
       name: 'title',
-      title: 'Título',
+      title: 'Encabezado',
       type: 'string',
-      description: 'Opcional. Encabeza el desglose si el dato lo necesita.',
+      description:
+        'Opcional. Encabeza el desglose; normalmente la pregunta de la que sale el dato.',
     }),
     defineField({
       name: 'rows',
@@ -55,6 +56,13 @@ export const dataBreakdown = defineType({
         }),
       ],
       validation: (rule) => rule.required().min(2),
+    }),
+    defineField({
+      name: 'footer',
+      title: 'Pie',
+      type: 'string',
+      description:
+        'Opcional. Se alinea a la derecha bajo las barras; normalmente la fuente del dato, p. ej. «Agertokiak (2026). Jóvenes y democracia.».',
     }),
   ],
   preview: {

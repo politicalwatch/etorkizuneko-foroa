@@ -41,8 +41,8 @@
   --color-scrim: rgba(0, 0, 0, 0.25); /* overlay del banner */
   --color-overlay: rgba(0, 0, 0, 0.75); /* fondo de pop-up / modal */
 
-  /* Magenta de los desgloses de datos (barras). Solo se usa ahí. */
-  --color-chart: #cc005f;
+  /* Color de las barras de los desgloses de datos. */
+  --color-chart: var(--color-brand-500);
   --color-chart-track: #eeeeef;
 
   /* Espaciado (rejilla de 5px del diseño) */

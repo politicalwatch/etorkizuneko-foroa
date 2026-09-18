@@ -39,7 +39,7 @@ const assetId = computed(
       class="featured__image"
       :asset-id="assetId"
       auto="format"
-      :w="1600"
+      :width="1600"
       alt=""
     />
 

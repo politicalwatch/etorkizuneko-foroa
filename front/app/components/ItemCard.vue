@@ -47,7 +47,7 @@ const assetId = computed(
       class="item-card__image"
       :asset-id="assetId"
       auto="format"
-      :w="560"
+      :width="560"
       alt=""
     />
 

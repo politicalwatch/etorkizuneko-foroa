@@ -29,7 +29,7 @@ const assetId = computed(
       class="banner__image"
       :asset-id="assetId"
       auto="format"
-      :w="1920"
+      :width="1920"
       alt=""
     />
 

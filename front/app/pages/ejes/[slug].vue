@@ -49,7 +49,7 @@ useSeoMeta({ title: () => vision.value?.title ?? '' })
       class="vision__image"
       :asset-id="assetId"
       auto="format"
-      :w="1920"
+      :width="1920"
       alt=""
     />
 

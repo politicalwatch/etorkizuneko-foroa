@@ -26,7 +26,7 @@ const to = computed(() => (props.slug ? `/ejes/${props.slug}` : undefined))
       class="vision-card__image"
       v-bind="{ assetId: (image as { asset?: { _ref?: string } })?.asset?._ref }"
       auto="format"
-      :w="720"
+      :width="720"
       alt=""
     />
 

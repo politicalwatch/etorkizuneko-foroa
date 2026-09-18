@@ -30,7 +30,7 @@ const images = computed(() => props.value?.images ?? [])
         class="gallery__image"
         :asset-id="image.asset._ref"
         auto="format"
-        :w="640"
+        :width="640"
         :alt="image.alt ?? ''"
       />
     </li>

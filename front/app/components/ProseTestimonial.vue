@@ -28,7 +28,7 @@ const hasImage = computed(() => Boolean(props.value?.image?.asset?._ref))
       class="testimonial__image"
       :asset-id="value.image.asset._ref"
       auto="format"
-      :w="640"
+      :width="640"
       :alt="value.image.alt ?? ''"
     />
 

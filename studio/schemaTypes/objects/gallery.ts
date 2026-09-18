@@ -10,6 +10,25 @@ import {ImagesIcon} from '@sanity/icons/Images'
  * idioma. Las imágenes son las mismas en los tres, así que conviene copiar el
  * bloque al traducir en lugar de volver a subirlas.
  */
+/**
+ * Cuenta las imágenes de la galería para el pie de la previsualización.
+ *
+ * `images` no siempre llega como array. El resolutor de previsualizaciones del
+ * Studio agrupa los caminos de `select` por su primer segmento: al pedir a la
+ * vez `images` (para contar) y `images.0` (para la miniatura), recorre el array
+ * para sacar el elemento 0 y lo que devuelve es un objeto indexado por
+ * posición — `{0: …, 1: …}` —, así que `images.length` es `undefined` y el pie
+ * decía siempre "0 imágenes". Con un único camino no pasa, y por eso el
+ * desglose de datos, que solo selecciona `rows`, sí cuenta bien.
+ */
+function countImages(images: unknown): number {
+  if (Array.isArray(images)) return images.length
+  if (images && typeof images === 'object') {
+    return Object.keys(images).filter((key) => /^\d+$/.test(key)).length
+  }
+  return 0
+}
+
 export const gallery = defineType({
   name: 'gallery',
   title: 'Galería',
@@ -44,7 +63,7 @@ export const gallery = defineType({
       media: 'images.0',
     },
     prepare({images, media}) {
-      const count = Array.isArray(images) ? images.length : 0
+      const count = countImages(images)
       return {
         title: 'Galería',
         subtitle: `${count} ${count === 1 ? 'imagen' : 'imágenes'}`,

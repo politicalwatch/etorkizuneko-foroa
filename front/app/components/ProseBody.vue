@@ -4,6 +4,7 @@ import ProseLink from './ProseLink.vue'
 import ProseStat from './ProseStat.vue'
 import ProseBreakdown from './ProseBreakdown.vue'
 import ProseGallery from './ProseGallery.vue'
+import ProseImage from './ProseImage.vue'
 import ProseTestimonial from './ProseTestimonial.vue'
 import { toBlocks, type PortableBlock } from '~/types/portable-text'
 
@@ -29,6 +30,14 @@ const DATA_TYPES = new Set(['statHighlight', 'dataBreakdown'])
 // …y bloques que ocupan todo el ancho, así que cierran la sección en curso.
 const FULL_TYPES = new Set(['gallery', 'testimonial'])
 
+// La imagen suelta es el único bloque que elige su ancho: el editor decide si
+// ocupa la fila entera o si se queda en la columna de texto, fluyendo entre los
+// párrafos como uno más. `wide` es el valor por defecto en el Studio, así que
+// solo `narrow` la devuelve a la columna.
+const isFullWidth = (block: PortableBlock) =>
+  FULL_TYPES.has(block._type)
+  || (block._type === 'contentImage' && block.layout !== 'narrow')
+
 interface Section {
   heading: PortableBlock | null
   text: PortableBlock[]
@@ -53,7 +62,7 @@ const sections = computed<Section[]>(() => {
   }
 
   for (const block of toBlocks(props.value)) {
-    if (FULL_TYPES.has(block._type)) {
+    if (isFullWidth(block)) {
       flush()
       out.push({ ...blank(), full: block })
       current = blank()
@@ -83,6 +92,7 @@ const components = {
     statHighlight: ProseStat,
     dataBreakdown: ProseBreakdown,
     gallery: ProseGallery,
+    contentImage: ProseImage,
     testimonial: ProseTestimonial
   }
 } as PortableTextComponents
@@ -187,7 +197,7 @@ const components = {
     grid-column: 2;
   }
 
-  // A todo lo ancho: galería y testimonio.
+  // A todo lo ancho: galería, imagen ancha y testimonio.
   .prose__full {
     margin-block: $space-lg;
   }

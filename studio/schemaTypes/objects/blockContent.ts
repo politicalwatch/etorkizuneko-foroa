@@ -60,6 +60,7 @@ export const blockContent = defineType({
     defineArrayMember({type: 'statHighlight'}),
     defineArrayMember({type: 'dataBreakdown'}),
     defineArrayMember({type: 'gallery'}),
+    defineArrayMember({type: 'contentImage'}),
     defineArrayMember({type: 'testimonial'}),
   ],
 })

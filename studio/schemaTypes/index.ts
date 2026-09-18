@@ -3,6 +3,7 @@ import {richText} from './objects/richText'
 import {statHighlight} from './objects/statHighlight'
 import {dataBreakdown} from './objects/dataBreakdown'
 import {gallery} from './objects/gallery'
+import {contentImage} from './objects/contentImage'
 import {testimonial} from './objects/testimonial'
 import {blockContent} from './objects/blockContent'
 import {homeBlock} from './objects/homeBlock'
@@ -29,6 +30,7 @@ export const schemaTypes = [
   statHighlight,
   dataBreakdown,
   gallery,
+  contentImage,
   testimonial,
   blockContent,
   homeBlock,

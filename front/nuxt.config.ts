@@ -38,6 +38,16 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  // Acceso restringido temporal (HTTP Basic Auth, ver
+  // server/middleware/basic-auth.ts). Se rellenan en runtime con
+  // NUXT_BASIC_AUTH_USER y NUXT_BASIC_AUTH_PASSWORD; vacías = sitio abierto.
+  runtimeConfig: {
+    basicAuth: {
+      user: '',
+      password: ''
+    }
+  },
+
   // El diseño es de identidad fija (blanco / negro / coral); no invertir con el
   // dark mode del sistema.
   colorMode: {
